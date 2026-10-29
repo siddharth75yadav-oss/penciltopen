@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topper's Corner - Manka Tuition Center</title>
+
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-dark: #1e3a8a;
+            --accent: #f59e0b;
+            --teal: #14b8a6;
+            --deep: #0f172a;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(180deg, #dff4ff 0%, #d9f2ff 32%, #f3fbff 100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.94), rgba(20, 184, 166, 0.92));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: clamp(1.5rem, 1.8vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: 0.8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            transition: color 0.25s ease, transform 0.25s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            color: #ffd866;
+            transform: translateY(-2px);
+        }
+
+        .topper-section {
+            padding: 4.5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep);
+            font-size: clamp(1.9rem, 3vw, 2.8rem);
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 90px;
+            height: 4px;
+            background: linear-gradient(to right, #2563eb, #14b8a6, #f59e0b);
+            margin: 12px auto 0;
+            border-radius: 999px;
+        }
+
+        .topper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .topper-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem 1.6rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 6px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .topper-card:nth-child(2) {
+            border-top-color: var(--teal);
+        }
+
+        .topper-card:nth-child(3) {
+            border-top-color: var(--accent);
+        }
+
+        .topper-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 35px rgba(15, 23, 42, 0.18);
+        }
+
+        .topper-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 22px rgba(29, 78, 216, 0.2);
+        }
+
+        .topper-card h3 {
+            color: var(--deep);
+            font-size: 1.35rem;
+        }
+
+        .achievement {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            padding: 0.6rem 1.3rem;
+            border-radius: 999px;
+            margin: 15px 0;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(29, 78, 216, 0.16);
+        }
+
+        blockquote {
+            background: rgba(219, 234, 254, 0.45);
+            padding: 15px;
+            border-left: 4px solid var(--teal);
+            border-radius: 8px;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 1.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .topper-section {
+                padding: 3.5rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1><a href="manka%20tution.html#Home">Manka Tuition Center</a></h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="manka%20tution.html#Home">Home</a></li>
+                <li><a href="manka%20tution.html#services">Services</a></li>
+                <li><a href="manka%20tution.html#Contact">Contact</a></li>
+                <li><a href="Untitled-3.html">Topper's Corner</a></li>
+                <li><a href="Untitled-2.html">Enroll Now</a></li>
+                <li><a href="fees-timetable.html">Fees</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="topper-section">
+    <h2 class="section-title">🏆 Our Toppers</h2>
+
+    <div class="container topper-grid">
+
+        <div class="topper-card">
+            <div class="topper-img">NO ONE</div>
+            <h3>No One</h3>
+            <div class="achievement">0%</div>
+            <blockquote>
+                "NIL"
+            </blockquote>
+        </div>
+
+        <div class="topper-card">
+            <div class="topper-img">NO ONE</div>
+            <h3>No One</h3>
+            <div class="achievement">0%</div>
+            <blockquote>
+                "NIL"
+            </blockquote>
+        </div>
+
+        <div class="topper-card">
+            <div class="topper-img">NO ONE</div>
+            <h3>No One</h3>
+            <div class="achievement">0%</div>
+            <blockquote>
+                "NIL"
+            </blockquote>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Manka Tuition Center. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

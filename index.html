@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manka Tuition Center</title>
+
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-dark: #1e3a8a;
+            --accent: #f59e0b;
+            --teal: #14b8a6;
+            --green: #22c55e;
+            --deep: #0f172a;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --bg: #e0f2fe;
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(180deg, #dff4ff 0%, #d9f2ff 32%, #f3fbff 100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.94), rgba(20, 184, 166, 0.92));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: clamp(1.5rem, 1.8vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: var(--white);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            transition: color 0.25s ease, transform 0.25s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            color: #ffd866;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 5rem 0 4rem;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(59, 130, 246, 0.1), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.18), transparent 28%),
+                linear-gradient(180deg, #dff5ff 0%, #d9eeff 100%);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.12);
+            z-index: 0;
+        }
+
+        .hero::before {
+            top: -40px;
+            left: -70px;
+        }
+
+        .hero::after {
+            bottom: -50px;
+            right: -40px;
+            background: rgba(20, 184, 166, 0.12);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(29, 78, 216, 0.24);
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+        }
+
+        .hero h2 {
+            color: var(--deep);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        .hero-intro {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1.12rem;
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            padding: 0.95rem 2rem;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 12px 22px rgba(29, 78, 216, 0.24);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn.secondary {
+            background: var(--white);
+            color: var(--primary-dark);
+            border: 1px solid rgba(29, 78, 216, 0.14);
+            box-shadow: 0 12px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 16px 26px rgba(29, 78, 216, 0.28);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            width: min(900px, 100%);
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+            border-radius: 18px;
+            padding: 1.2rem 1rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .features-list li {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.85rem 1.4rem;
+            border-radius: 999px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            border: 1px solid rgba(29, 78, 216, 0.12);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+        }
+
+        .features-list li::before {
+            content: '✔';
+            margin-right: 8px;
+            color: var(--green);
+        }
+
+        /* Services Section */
+        .content-section {
+            padding: 4.5rem 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(191, 219, 254, 0.35));
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep);
+            font-size: clamp(1.9rem, 3vw, 2.8rem);
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 90px;
+            height: 4px;
+            background: linear-gradient(to right, #2563eb, #14b8a6, #f59e0b);
+            margin: 12px auto 0;
+            border-radius: 999px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem 1.6rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 6px solid var(--primary);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:nth-child(1) { border-top-color: #2563eb; }
+        .service-card:nth-child(2) { border-top-color: #ef4444; }
+        .service-card:nth-child(3) { border-top-color: #f59e0b; }
+        .service-card:nth-child(4) { border-top-color: #8b5cf6; }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            top: -45px;
+            right: -35px;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 35px rgba(15, 23, 42, 0.18);
+        }
+
+        .service-card h3 {
+            color: var(--deep);
+            margin-bottom: 0.8rem;
+            font-size: 1.45rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card ul li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.2rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .service-card ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: linear-gradient(135deg, #0f766e 0%, #10b981 35%, #34d399 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .location-section .container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .location-section h2 {
+            margin-bottom: 0.2rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .location-section p {
+            font-size: 1.1rem;
+            max-width: 720px;
+        }
+
+        .location-section a {
+            color: #f5f3ff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .location-section .btn {
+            background: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
+        }
+
+        .why-us {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            padding: 1.6rem 1.3rem;
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+            border-top: 5px solid var(--accent);
+            transition: transform 0.25s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .why-card h3 {
+            color: var(--deep);
+            margin: 0.7rem 0;
+            font-size: 1.2rem;
+        }
+
+        .why-card p {
+            color: var(--muted);
+        }
+
+        .icon-badge {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(20, 184, 166, 0.18));
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .testimonials {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, rgba(219, 234, 254, 0.45), rgba(255, 255, 255, 0.45));
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 1.5rem 1.25rem;
+            border-radius: 18px;
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+            border-left: 5px solid var(--teal);
+        }
+
+        .testimonial-card p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card strong {
+            color: var(--deep);
+            display: block;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 16px 26px rgba(37, 211, 102, 0.35);
+            z-index: 2000;
+            transition: transform 0.25s ease;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 1.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header .container {
+                gap: 0.75rem;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.35rem;
+                margin-top: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.55rem 0.4rem;
+                border-radius: 10px;
+                font-size: 0.95rem;
+            }
+
+            nav ul li a:hover {
+                background: rgba(255, 255, 255, 0.12);
+                transform: none;
+            }
+
+            .hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .hero h2 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .stats-bar,
+            .why-grid,
+            .testimonial-grid,
+            .services-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .features-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-list li {
+                width: min(100%, 320px);
+            }
+
+            .content-section,
+            .why-us,
+            .testimonials {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .service-card:hover,
+            .why-card:hover {
+                transform: none;
+            }
+
+            .floating-whatsapp {
+                right: max(16px, env(safe-area-inset-right));
+                bottom: max(16px, env(safe-area-inset-bottom));
+                width: 56px;
+                height: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(100% - 2rem, 1100px);
+            }
+
+            .logo h1 {
+                font-size: 1.35rem;
+            }
+
+            .hero-badge {
+                font-size: 0.68rem;
+                padding: 0.5rem 0.85rem;
+            }
+
+            .hero-intro {
+                font-size: 1rem;
+            }
+
+            .cta-row {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .cta-row .btn,
+            .location-section .btn {
+                width: 100%;
+                padding: 0.85rem 1rem;
+            }
+
+            .stat-box {
+                padding: 1rem;
+            }
+
+            .content-section,
+            .why-us,
+            .testimonials,
+            .location-section {
+                padding: 2.75rem 0;
+            }
+
+            .service-card {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .location-section p {
+                font-size: 1rem;
+                overflow-wrap: anywhere;
+            }
+
+            footer .container {
+                padding: 0 0.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="#Home">Manka Tuition Center</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                    <li><a href="Untitled-3.html">Topper's Corner</a></li>
+                    <li><a href="Untitled-2.html">Enroll Now</a></li>
+                    <li><a href="fees-timetable.html">Fees</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="Home" class="hero">
+        <div class="container">
+            <span class="hero-badge">Learning that shines brighter</span>
+            <h2>Welcome to Manka Tuition Center</h2>
+            <p class="hero-intro">
+                Empowering students to achieve academic excellence with personalized tutoring and expert guidance.
+                Join us to unlock your true potential and build confidence for every exam and future goal.
+            </p>
+            <div class="cta-row">
+                <a href="#Contact" class="btn">Book a Free Demo</a>
+                <a href="#services" class="btn secondary">Explore Programs</a>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">Years of Guidance</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">1.2k+</span>
+                    <span class="stat-label">Students Mentored</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Confidence Boost</span>
+                </div>
+            </div>
+
+            <ul class="features-list">
+                <li>Expert Tutoring</li>
+                <li>Personalized Plans</li>
+                <li>Small Batch Sizes</li>
+                <li>Flexible Timings</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Families Choose Us</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon-badge">🎯</div>
+                    <h3>Focused Learning</h3>
+                    <p>Every session is designed to improve weak areas and strengthen concept clarity.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon-badge">📚</div>
+                    <h3>Smart Study Plan</h3>
+                    <p>Students get step-by-step guidance built around school curriculum and exam goals.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon-badge">🤝</div>
+                    <h3>Supportive Mentors</h3>
+                    <p>We create a positive environment where students feel confident, motivated, and heard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Parents Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>“Manka is very patient and helpful. My daughter gained confidence in Maths within a few weeks.”</p>
+                    <strong>— Meena Sharma</strong>
+                </div>
+                <div class="testimonial-card">
+                    <p>“The personal attention and regular guidance made a huge difference in my son's exam preparation.”</p>
+                    <strong>— Rahul Verma</strong>
+                </div>
+                <div class="testimonial-card">
+                    <p>“The study environment is excellent and the support is truly encouraging by Manka for every student is great.”</p>
+                    <strong>— Neha Gupta</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Our Tutoring Programs</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>One-on-One Tutoring</h3>
+                    <p>Focused attention to fix specific weak points.</p>
+                    <ul>
+                        <li>Customized study plans</li>
+                        <li>1-on-1 live sessions</li>
+                        <li>Direct doubt clearing</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Group Tutoring</h3>
+                    <p>Learn collaboratively with peers.</p>
+                    <ul>
+                        <li>Interactive discussions</li>
+                        <li>Peer-to-peer learning</li>
+                        <li>Healthy competition</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Test Preparation</h3>
+                    <p>Ace your exams with confidence.</p>
+                    <ul>
+                        <li>Mock test series</li>
+                        <li>Time management tricks</li>
+                        <li>Revision strategies</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Homework Assistance</h3>
+                    <p>Complete your homework effectively.</p>
+                    <ul>
+                        <li>Concept clearance</li>
+                        <li>Project guidance</li>
+                        <li>Assignment reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Contact" class="Contact">
+        <div class="location-section">
+            <div class="container">
+                <h2>Visit Our Center</h2>
+                <p>We are located in Maple Heights F Tower F901, Gurugram. Come visit us for a free demo session and experience a brighter path to success.</p>
+                <p>Contact us: <a href="tel:9810212853">9810212853</a> | Email: <a href="mailto:mankavij@hotmail.com">mankavij@gmail.com</a></p>
+                <a href="https://www.google.com/maps/place/Maple+Heights/@28.452208,77.0780914,17z/data=!3m1!4b1!4m6!3m5!1s0x390d1900475c85b1:0x2af3b52ce90e446a!8m2!3d28.452208!4d77.0806663!16s%2Fg%2F11yxzvbzrd?entry=ttu&g_ep=EgoyMDI2MDUzMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn">View on Google Maps</a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 Manka Tuition Center. All rights reserved.</p>
+            </div>
+        </footer>
+    </section>
+
+    <a href="https://wa.me/919810212853" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">✆</a>
+</body>
+</html>

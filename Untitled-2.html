@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now | Manka Tuition Center</title>
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-dark: #1e3a8a;
+            --accent: #f59e0b;
+            --teal: #14b8a6;
+            --green: #22c55e;
+            --deep: #0f172a;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+            --bg: #eaf6ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #dff4ff 0%, #d9f2ff 32%, #f3fbff 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.94), rgba(20, 184, 166, 0.92));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: clamp(1.4rem, 2vw, 2rem);
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            font-size: 0.98rem;
+            transition: color 0.25s ease, transform 0.25s ease;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            color: #ffd866;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.12), rgba(20, 184, 166, 0.1));
+            padding: 4rem 0 2rem;
+        }
+
+        .hero-box {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text h2 {
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
+            color: var(--deep);
+            margin-bottom: 0.8rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 620px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1.2rem;
+        }
+
+        .hero-tags span {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(29, 78, 216, 0.12);
+            color: var(--primary-dark);
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        .mini-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            border-top: 5px solid var(--green);
+        }
+
+        .mini-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--deep);
+        }
+
+        .mini-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .mini-card li {
+            color: var(--muted);
+            font-weight: 600;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .mini-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 800;
+        }
+
+        .enroll-section {
+            padding: 4rem 0;
+        }
+
+        .form-shell {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .info-panel {
+            background: linear-gradient(135deg, #0f766e 0%, #10b981 35%, #34d399 100%);
+            color: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-panel h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-panel p {
+            margin-bottom: 1rem;
+            opacity: 0.96;
+        }
+
+        .info-points {
+            list-style: none;
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .info-points li {
+            position: relative;
+            padding-left: 1.3rem;
+            font-weight: 600;
+        }
+
+        .info-points li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-size: 1.4rem;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            border-top: 6px solid var(--primary);
+        }
+
+        .form-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-header h2 {
+            color: var(--deep);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 0.3rem;
+        }
+
+        .form-header p {
+            color: var(--muted);
+        }
+
+        form {
+            display: grid;
+            gap: 1.1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            color: var(--deep);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #fff;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.08);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .submit-btn {
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 999px;
+            padding: 1rem 1.6rem;
+            font-size: 1rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--teal));
+            color: var(--white);
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(29, 78, 216, 0.22);
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero-box,
+            .form-shell {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-wrap {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container,
+            .info-panel {
+                padding: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-wrap">
+            <div class="logo">
+                <h1><a href="manka%20tution.html#Home">Manka Tuition Center</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="manka%20tution.html#Home">Home</a></li>
+                    <li><a href="manka%20tution.html#services">Programs</a></li>
+                    <li><a href="manka%20tution.html#Contact">Contact</a></li>
+                    <li><a href="Untitled-3.html">Topper's Corner</a></li>
+                    <li><a href="Untitled-2.html">Enroll Now</a></li>
+                    <li><a href="fees-timetable.html">Fees</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-box">
+            <div class="hero-text">
+                <h2>Enroll for a brighter academic future</h2>
+                <p>
+                    Give your child the right guidance, confidence, and structure to grow academically.
+                    At Manka Tuition Center, we focus on concept clarity, steady practice, and strong results.
+                </p>
+                <div class="hero-tags">
+                    <span>Personalized guidance</span>
+                    <span>Small batches</span>
+                    <span>Exam-focused learning</span>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <h3>Why parents choose us</h3>
+                <ul>
+                    <li>Expert teachers for core subjects</li>
+                    <li>Regular assessment & performance tracking</li>
+                    <li>Friendly, disciplined learning environment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="enroll-section">
+        <div class="container form-shell">
+            <aside class="info-panel">
+                <h3>Admission Details</h3>
+                <p>Fill out the form and our team will contact you for a free demo session and academic counseling.</p>
+                <ul class="info-points">
+                    <li>Free demo class available</li>
+                    <li>Flexible class timings</li>
+                    <li>Subject-wise support</li>
+                    <li>Regular parent updates</li>
+                </ul>
+            </aside>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Student Enrollment Form</h2>
+                    <p>Let us help your child build stronger concepts and greater confidence.</p>
+                </div>
+
+                <form action="https://formsubmit.co/siddharth75yadav@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Student Enrollment - Manka Tuition Center">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/3.4%20Birthday%20Invite%20Project/thank-you.html">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student_name">Student Name</label>
+                            <input type="text" id="student_name" name="student_name" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="grade">Class / Grade</label>
+                            <input type="text" id="grade" name="grade" placeholder="e.g. 8th Standard" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="school_name">School Name</label>
+                            <input type="text" id="school_name" name="school_name" placeholder="School name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parent_name">Parent's Name</label>
+                            <input type="text" id="parent_name" name="parent_name" placeholder="Parent's name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" pattern="[0-9]{10,}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="parent@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subjects">Subjects Needed</label>
+                            <input type="text" id="subjects" name="subjects" placeholder="Maths, Science, English">
+                        </div>
+                        <div class="form-group">
+                            <label for="batch">Preferred Batch</label>
+                            <select id="batch" name="batch">
+                                <option value="">Select batch</option>
+                                <option>Weekday Morning</option>
+                                <option>Weekday Evening</option>
+                                <option>Weekend</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your child's learning goals or any specific requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Enrollment</button>
+                </form>
+
+                <a class="back-link" href="manka%20tution.html#Home">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Manka Tuition Center. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

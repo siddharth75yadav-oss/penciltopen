@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fees & Timetable | Manka Tuition Center</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --teal: #14b8a6;
+      --accent: #f59e0b;
+      --deep: #0f172a;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --white: #ffffff;
+      --bg: #edf7ff;
+      --shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #dff4ff 0%, #d9f2ff 32%, #f3fbff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: min(1100px, 90%); margin: 0 auto; }
+
+    header {
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.94), rgba(20, 184, 166, 0.92));
+      color: var(--white);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      display: inline-block;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd866;
+      transform: translateY(-2px);
+    }
+
+    .page-hero {
+      padding: 4rem 0 2rem;
+      background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(20,184,166,0.08));
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      color: var(--deep);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      max-width: 730px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 2rem;
+    }
+
+    .timetable-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .time-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      border-top: 5px solid var(--primary);
+    }
+
+    .time-card h3 {
+      color: var(--deep);
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .time-card p {
+      color: var(--muted);
+    }
+
+    .info-table-wrap {
+      overflow-x: auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+
+    thead th {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      color: var(--white);
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    tbody td {
+      padding: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: center;
+      color: var(--text);
+    }
+
+    tbody tr:nth-child(even) { background: rgba(148, 163, 184, 0.04); }
+
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color: var(--white);
+      padding: 0.95rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(29, 78, 216, 0.2);
+    }
+
+    footer {
+      background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+      color: rgba(255,255,255,0.9);
+      padding: 1.6rem 0;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .nav-wrap { flex-direction: column; text-align: center; }
+      nav ul { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <div class="logo">
+        <h1><a href="manka%20tution.html#Home">Manka Tuition Center</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="manka%20tution.html#Home">Home</a></li>
+          <li><a href="manka%20tution.html#services">Programs</a></li>
+          <li><a href="manka%20tution.html#Contact">Contact</a></li>
+          <li><a href="Untitled-3.html">Topper's Corner</a></li>
+          <li><a href="Untitled-2.html">Enroll</a></li>
+          <li><a href="fees-timetable.html">Fees</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Fees & Class Timetable</h1>
+      <p>
+        Transparent pricing and well-structured schedules designed to support focused learning,
+        regular revision, and steady academic growth.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Fee Structure</h2>
+      <div class="info-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Frequency</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1st</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>2nd</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>3rd</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>4th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>5th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>6th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>7th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>8th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>9th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>10th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>11th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>12th</td><td>Per month</td><td>₹10,000</td></tr>
+            <tr><td>Computer Class</td><td>Per month</td><td>₹3,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align: center; margin-top: 1rem; color: var(--muted);">
+        Classes 11th and 12th are available for Arts and Commerce students only.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="background: rgba(148, 163, 184, 0.05);">
+    <div class="container">
+      <h2 class="section-title">Weekly Timetable</h2>
+      <div class="info-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Morning Batch</th>
+              <th>Evening Batch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Maths & Science</td>
+              <td>English & SST</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Physics & Chemistry</td>
+              <td>Maths Practice</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>English & Grammar</td>
+              <td>Science Revision</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Problem Solving</td>
+              <td>Concept Doubt Session</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>Mock Test Practice</td>
+              <td>Weak Area Improvement</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>Revision + Quiz</td>
+              <td>Parent Interaction</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Batch Details</h2>
+      <div class="timetable-grid">
+        <div class="time-card">
+          <h3>Weekday Morning</h3>
+          <p>9:00 AM - 11:00 AM</p>
+        </div>
+        <div class="time-card">
+          <h3>Weekday Evening</h3>
+          <p>5:00 PM - 7:00 PM</p>
+        </div>
+        <div class="time-card">
+          <h3>Weekend Classes</h3>
+          <p>10:00 AM - 1:00 PM</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="Untitled-2.html">Enroll Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Manka Tuition Center. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
